@@ -722,7 +722,6 @@ int main(void)
     reset_level();
     reset_actor_positions();
     
-    //initialise tile map
     
     
     SetTargetFPS(100); // Set our game to run at 60 frames-per-second
@@ -1122,6 +1121,7 @@ int main(void)
         }
         else if (IsKeyPressed(KEY_SPACE)){
             reset_level();
+            reset_actor_positions();
         }
         
         if (score == NUM_ACCESSIBLE_TILES * TAC_POINTS){
@@ -1195,7 +1195,8 @@ int main(void)
         else if (blinky_r.mode == EATEN) { blinky_color = BLACK; }
         DrawCircleV(blinky_r.centre_pos, ((float) TILE_LENGTH / 8) * 5,
                     blinky_color);
-    
+        
+        //victory and game over text
         if (player_won || pacman_lives == 0)
         {
             DrawText(player_won ? "YOU WON!" : "GAME OVER", SCREEN_WIDTH / 2 - 60, 35, 40,
